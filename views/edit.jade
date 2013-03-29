@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .edit-page
+      h1= title
+      
+      - if(collectionItem === null || collectionItem === false)
+            div(class="alert")
+                button(type="button", class="close", data-dismiss="alert")
+                span Warning, collection item not found!
+            a(href="/") Go Back
+      - else
+          h2 Title: #{collectionItem.title}
+          
+          form(id="edit-item-form", action="/", method="post")
+            input(type="hidden", name="url", value="#{collectionItem.url}")
+            textarea(class="ckeditor", name="postcontent", id="postcontent")
+                !{collectionItem.content}
+            input(id="savebtn", type="button", class="btn btn-primary", value="Save")
+            input(id="cancelbtn", type="button", class="btn btn-danger", value="Cancel")
+          
+          script(type='text/javascript', src='/vendor/ckeditor/ckeditor.js')
+          script(type="text/javascript", src="/javascripts/edit.js")

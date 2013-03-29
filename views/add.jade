@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    .add-page
+      h1= title
+      
+      - if (collectionName !== null && headerFields !== null) {
+            p The following meta fields were copied over from another item in this collection as a starter. Modify as needed.
+              form(id="add-item-form", class="form-horizontal", action="/add/save", method="post")
+                input(type='hidden', name='fullDirPath', value="#{fullDirPath}")
+                
+                - for (header in headerFields) {
+                    .control-group
+                        label.control-label(for='#{header}') #{header}:
+                        .controls
+                            - if (header === 'title') {
+                                input(id='title', name='title', type='text', placeholder='The item title here...', required)
+                            - } else {
+                                input(name='header-#{header}', type='text', value='#{headerFields[header]}')
+                            - }
+                - }
+                //- Add a suggested title
+                .control-group
+                    label.control-label(for='filename') suggested filename:
+                    .controls
+                        input(id='filename', name='filename', type='text', placeholder='#{suggestedFileName}', required)
+                    
+                .control-group
+                    textarea(class="ckeditor", name="postcontent", id="postcontent")
+                    input(id="savebtn", type="button", class="btn btn-primary", value="Save")
+                    input(id="cancelbtn", type="button", class="btn btn-danger", value="Cancel")
+          
+            script(type='text/javascript', src='/vendor/ckeditor/ckeditor.js')
+            script(type='text/javascript', src='/javascripts/add.js')
+      - } else {
+            div(class="alert")
+                button(type="button", class="close", data-dismiss="alert")
+                span Warning, unknown error!
+            a(href="/") Go Back
+      - }

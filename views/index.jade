@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1= title
+  
+  //- Show an alert with the save status as needed
+  - if(itemSaved && itemSaved === true)
+        div(class="alert")
+            button(type="button", class="close", data-dismiss="alert")
+            span Success, item saved!
+  - else if(itemSaved === false)
+        div(class="alert")
+            button(type="button", class="close", data-dismiss="alert")
+            span Error, item not saved!
+            
+  div(class="collections row")
+    .span4
+      - if(collectionList && collectionList !== null)
+            p Now viewing items in collection: 
+            select(id="active-collection")
+             - each collection in collectionList
+                option(value="#{collection}") #{collection}
+            
+            input(id="addbtn", type="button", class="btn btn-primary", value="Add Collection Item")
+    .span8
+        h3 Collection Items
+        div(id="collection-items", per-page="5")
+            ul
+                - if(defaultCollectionItems && defaultCollectionItems !== null)
+                - each collectionItem in defaultCollectionItems
+                    li(class="i")
+                        a(href= '/edit?slug=' + encodeURIComponent(collectionItem.url)) #{collectionItem.title}
+  
+  script(type="text/javascript", src="/vendor/jQuery-Client-Side-Pagination/jquery.client_side_pagination.js");               
+  script(type="text/javascript", src="/javascripts/index.js")

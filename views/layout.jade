@@ -1,0 +1,25 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/vendor/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type="text/javascript", src="http://code.jquery.com/jquery-1.9.1.min.js")
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+        .navbar-inner
+            .container
+              button.btn.btn-navbar(type='button', data-toggle='collapse', data-target='.nav-collapse')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.brand(href='#') DocPad Collections Editor
+              .nav-collapse.collapse
+                ul.nav
+                  li.active
+                    a(href='/') Home
+
+    div(class="container")
+        block content
+    
+    script(type="text/javascript", src="/vendor/bootstrap/js/bootstrap.min.js")

@@ -1,0 +1,45 @@
+body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.alert {
+    margin-top: 20px;
+}
+
+.collections.row {
+    margin-top: 30px;
+}
+.collections.row h3 {
+    margin-top: 0px;
+    padding-top: 0px;
+    line-height: normal;
+}
+
+.edit-page h2 {
+    font-size: 24px;
+    margin-top: 25px;
+}
+
+.form-horizontal .controls {
+    margin-left: 140px;
+}
+/*
+.form-horizontal .controls {
+    padding-top: 10px;
+}
+.form-horizontal .control-group label {
+    padding-top: 15px;
+}
+*/
+.form-horizontal label {
+    width: auto !important;
+}
+
+#add-item-form .btn,
+#edit-item-form .btn {
+    margin: 10px 5px 0 0;
+}
