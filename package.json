@@ -1,7 +1,7 @@
 {
   "name": "docpad-plugin-dce",
   "description": "A simple WYSIWYG style editor interface for DocPad Collections. Allows creating and editing of DocPad collections from the browser.",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "scripts": {
     "start": "node app",
     "postinstall" : "bin/postinstall.sh"
