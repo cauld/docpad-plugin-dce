@@ -8,8 +8,8 @@
  * You can enable simple http-auth to help protect who can edit collections.  
 */
 var config = {
-    useHttpAuth: true, //true or false
-    collectionsAvailableForEdit: ['posts'] //(e.g.) posts
+    useHttpAuth: false, //true or false
+    collectionsAvailableForEdit: [] //(e.g.) posts
 };
 
 module.exports = config;
