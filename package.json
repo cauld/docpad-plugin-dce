@@ -1,10 +1,18 @@
 {
   "name": "docpad-collections-editor",
   "description": "A simple WYSIWYG style editor interface for DocPad Collections. Allows creating and editing of DocPad collections from the browser.",
-  "version": "0.9.0",
-  "private": true,
+  "version": "0.9.1",
   "scripts": {
-    "start": "node app"
+    "start": "node app",
+    "postinstall" : "bin/postinstall.sh"
+  },
+  "author": {
+    "name": "Chad Auld",
+    "email": "chadauld@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/cauld/docpad-collections-editor.git"
   },
   "dependencies": {
     "express": "3.x",

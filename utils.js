@@ -1,4 +1,4 @@
-var config = require('./config.js'),
+var dceConfig = require('../../dce-config.js'),
     _ = require('underscore'),
     fs = require('fs');
 
@@ -16,8 +16,8 @@ exports.getFileFromSlug = function(slug) {
 exports.getDefaultCollectionName = function() {
     var defaultCollectionName = false;
     
-    if (_.isEmpty(config.collectionsAvailableForEdit) === false) {
-        defaultCollectionName = config.collectionsAvailableForEdit[0]; 
+    if (_.isEmpty(dceConfig.collectionsAvailableForEdit) === false) {
+        defaultCollectionName = dceConfig.collectionsAvailableForEdit[0]; 
     }
     
     return defaultCollectionName;
@@ -26,12 +26,12 @@ exports.getDefaultCollectionName = function() {
 exports.getAvailableCollections = function() {
     var collections = null;
     
-    if (_.isEmpty(config.collectionsAvailableForEdit) === false) {
+    if (_.isEmpty(dceConfig.collectionsAvailableForEdit) === false) {
         collections = {};
         
         //Track down the items for the requested collections 
-        for (var i=0; i<config.collectionsAvailableForEdit.length; i++) {
-        var collectionName = config.collectionsAvailableForEdit[i];
+        for (var i=0; i<dceConfig.collectionsAvailableForEdit.length; i++) {
+        var collectionName = dceConfig.collectionsAvailableForEdit[i];
             collections[collectionName] = getCollectionItems(collectionName);
         } 
     }
@@ -42,8 +42,8 @@ exports.getAvailableCollections = function() {
 exports.getCollectionList = function() {
     var collectionList = [];
     
-    if (_.isEmpty(config.collectionsAvailableForEdit) === false) {
-        collectionList = config.collectionsAvailableForEdit;
+    if (_.isEmpty(dceConfig.collectionsAvailableForEdit) === false) {
+        collectionList = dceConfig.collectionsAvailableForEdit;
     }
     
     return collectionList;

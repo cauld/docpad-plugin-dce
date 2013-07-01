@@ -10,7 +10,7 @@ var server,
     http = require('http'),
     app = express(),
     path = require('path'),
-    config = require('./config'),
+    dceConfig = require('../../dce-config'),
     routes = require('./routes'),
     addRoutes = require('./routes/add'),
     editRoutes = require('./routes/edit'),
@@ -21,8 +21,12 @@ app.configure(function(){
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     
-    if (config.useHttpAuth === true) {
-        app.use(express.basicAuth(config.authUser, config.authPass));
+    if (dceConfig.useHttpAuth === true) {
+        if (process.env.DCE_AUTH_USER && process.env.DCE_AUTH_PASSWORD) {
+            app.use(express.basicAuth(process.env.DCE_AUTH_USER, process.env.DCE_AUTH_PASSWORD));
+        } else {
+            console.log("Warning: DCE http auth was requested, but one or more ENV variables are missing! Not enabled.");
+        }
     }
   
     app.use(express.favicon());
