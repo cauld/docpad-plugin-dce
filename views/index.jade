@@ -26,7 +26,7 @@ block content
         h3 Collection Items
         div(id="collection-items", per-page="5")
             ul
-                - if(defaultCollectionItems && defaultCollectionItems !== null)
+              - if(defaultCollectionItems && defaultCollectionItems !== null)
                 - each collectionItem in defaultCollectionItems
                     li(class="i")
                         a(href= '/edit?slug=' + encodeURIComponent(collectionItem.url)) #{collectionItem.title}
